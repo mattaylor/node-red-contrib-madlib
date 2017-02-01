@@ -22,6 +22,7 @@
     "email": "mat.taylor@gmail.com"
   },
   "dependencies": {
-    "node-red-contrib-sql": "^0.1.7"
+    "node-red-contrib-sql": "^0.1.7",
+    "lodash": "^4.16.6"
   }
 }
