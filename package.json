@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-madlib",
   "description": "A collection of Node-RED nodes to create machine learning pipelines using apache madlib.",
-  "version": "1.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattaylor/node-red-contrib-madlib.git"
