@@ -1,0 +1,38 @@
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>-->
+<script src="/madops.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dot/1.1.0/doT.min.js"></script>
+<script type="text/javascript">
+   
+   var madnode = { 
+      category: 'madlib', color: '#D8B7D8', icon: 'db.png', align:'center', inputs:1, outputs:1,
+      defaults: { 
+         server: { required: true, type: 'sqldb' }, 
+         nodeId: { }
+      },
+      label: function() { return this.nodeId || this.method || this.type },
+      oneditprepare: function() { 
+         var form = ""
+         for (let d in this._def.defaults) {
+            let def = this._def.defaults[d]
+            if (def.noEdit) continue
+            let pre = def.prefix ? def.prefix+'_' : '' 
+            let pid = this._def.category == 'config' ? 'node-config-input-'+d : 'node-input-'+d
+            form += '<div class="form-row"><label for="'+pid+'"><i class="icon-tag"></i>'+d+'</label>\n'
+            if (def.options) {
+               form += '<select id="'+pid+'" placeholder="'+d+'">'
+               for (let opt in def.options) form += '<option value="'+pre+opt+'">'+opt+'</option>'
+               form += '</select></div>'
+            }
+            else form += '<input type="text" id="'+pid+'" placeholder="'+d+'"></div>'
+         }
+         $('#dialog-form').append(form)
+      }
+   }
+   console.log(types)
+   for (let m in madops) {
+     if (m === '_proto') continue
+     let madop = madops[m]
+     console.log('register:', madop)
+     RED.nodes.registerType('m:'+m, $.extend(!type.final, {}, madnode, madops._proto, madop))
+   }
+</script>
